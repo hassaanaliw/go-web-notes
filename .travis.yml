@@ -24,6 +24,7 @@ git:
 #   required = ["github.com/golangci/golangci-lint/cmd/golangci-lint"]
 before_script:
   - go get github.com/golangci/golangci-lint/cmd/golangci-lint
+  - go get github.com/stretchr/testify/assert
 
 # script always runs to completion (set +e). If we have linter issues AND a
 # failing test, we want to see both. Configure golangci-lint with a

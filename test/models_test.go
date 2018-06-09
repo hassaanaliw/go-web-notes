@@ -2,7 +2,7 @@ package test
 
 import (
 	"testing"
-	"webnotes/model"
+	"github.com/hassaanaliw/go-web-notes/model"
 	"github.com/stretchr/testify/assert"
 )
 
