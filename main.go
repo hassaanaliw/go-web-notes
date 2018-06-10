@@ -13,10 +13,17 @@ import (
 	"fmt"
 	"github.com/bndr/gotabulate"
 	"github.com/hassaanaliw/go-web-notes/config"
+	"github.com/gorilla/mux"
+	"github.com/hassaanaliw/go-web-notes/route"
+	"net/http"
+	"github.com/gorilla/handlers"
+	"os"
 )
 
 // Main entry point for this application
 func main() {
+
+	// Load Configuration
 	loadStatus, configuration := config.LoadConfig()
 
 	if !loadStatus {
@@ -25,6 +32,7 @@ func main() {
 		return
 	}
 
+	// Initialise the configuration logger
 	configOutputHeaders := []string{"Config Variables", "Config Value"}
 	row_debug := []interface{}{"Debug", configuration.Debug}
 	row_db_url := []interface{}{"Database URL", configuration.DatabaseURL}
@@ -33,6 +41,16 @@ func main() {
 	if configuration.Debug {
 		TableOutput(configOutputHeaders, [][]interface{}{row_debug, row_db_url, row_port})
 	}
+
+	// Setup Router
+	router := mux.NewRouter()
+	router.HandleFunc("/", route.Index)
+	router.HandleFunc("/static/css/{filename}", route.CSSHandler)
+	router.HandleFunc("/static/js/{filename}", route.JSHandler)
+
+	// Serve the HTTP Application
+	fmt.Printf("Serving web app on url: http://localhost:%d\n", configuration.Port)
+	http.ListenAndServe(fmt.Sprintf(":%d", configuration.Port), handlers.LoggingHandler(os.Stdout, router))
 
 }
 
