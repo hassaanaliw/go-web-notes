@@ -12,11 +12,12 @@ package main
 import (
 	"fmt"
 	"github.com/bndr/gotabulate"
+	"github.com/hassaanaliw/go-web-notes/config"
 )
 
 // Main entry point for this application
 func main() {
-	loadStatus, config := loadConfig()
+	loadStatus, configuration := config.LoadConfig()
 
 	if !loadStatus {
 		// Kill if we can't load config file
@@ -25,19 +26,19 @@ func main() {
 	}
 
 	configOutputHeaders := []string{"Config Variables", "Config Value"}
-	row_debug := []interface{}{"Debug", config.Debug}
-	row_db_url := []interface{}{"Database URL", config.DatabaseURL}
-	row_port := []interface{}{"Port", config.Port}
+	row_debug := []interface{}{"Debug", configuration.Debug}
+	row_db_url := []interface{}{"Database URL", configuration.DatabaseURL}
+	row_port := []interface{}{"Port", configuration.Port}
 
-	if config.Debug {
-		tableOutput(configOutputHeaders, [][]interface{}{row_debug, row_db_url, row_port})
+	if configuration.Debug {
+		TableOutput(configOutputHeaders, [][]interface{}{row_debug, row_db_url, row_port})
 	}
 
 }
 
 // Helper function to output data in a nice tabular format
 // headers is a slice of table headers, rows are the rows to print
-func tableOutput(headers []string, rows [][]interface{}) {
+func TableOutput(headers []string, rows [][]interface{}) {
 
 	// Create an object from 2D interface array
 	t := gotabulate.Create(rows)
