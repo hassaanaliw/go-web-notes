@@ -50,7 +50,12 @@ func main() {
 
 	// Serve the HTTP Application
 	fmt.Printf("Serving web app on url: http://localhost:%d\n", configuration.Port)
-	http.ListenAndServe(fmt.Sprintf(":%d", configuration.Port), handlers.LoggingHandler(os.Stdout, router))
+	err := http.ListenAndServe(fmt.Sprintf(":%d", configuration.Port),
+		handlers.LoggingHandler(os.Stdout, router))
+
+	if err != nil {
+		fmt.Println(err)
+	}
 
 }
 
