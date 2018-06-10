@@ -27,6 +27,7 @@ before_script:
   - go get github.com/stretchr/testify/assert
   - go get github.com/bndr/gotabulate
   - go get github.com/gorilla/handlers
+  - go get github.com/gorilla/mux
 
 # script always runs to completion (set +e). If we have linter issues AND a
 # failing test, we want to see both. Configure golangci-lint with a
