@@ -14,7 +14,7 @@ import (
 )
 
 type Config struct {
-	Port        int `json:"port"`
+	Port        int    `json:"port"`
 	Debug       bool   `json:"debug"`
 	DatabaseURL string `json:"database_url"`
 }
@@ -45,6 +45,10 @@ func loadConfig() (bool, *Config) {
 	defer jsonFile.Close()
 
 	jsonParser := json.NewDecoder(jsonFile)
-	jsonParser.Decode(config)
+	parseError := jsonParser.Decode(config)
+	if parseError != nil {
+		fmt.Println(err)
+		return false, config
+	}
 	return true, config
 }
