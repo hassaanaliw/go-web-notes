@@ -17,6 +17,7 @@ import (
 // Main entry point for this application
 func main() {
 	loadStatus, config := loadConfig()
+
 	if !loadStatus {
 		// Kill if we can't load config file
 		fmt.Print("Error Loading Configuration File")
