@@ -8,9 +8,9 @@ from config.json and environment variables if they exist
 package config
 
 import (
-	"os"
-	"fmt"
 	"encoding/json"
+	"fmt"
+	"os"
 )
 
 type Config struct {

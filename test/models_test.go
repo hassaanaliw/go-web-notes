@@ -1,14 +1,14 @@
 package test
 
 import (
-	"testing"
 	"github.com/hassaanaliw/go-web-notes/model"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 // Create a sample category
 func TestCreateCategory(t *testing.T) {
-	category := model.Category{Name: "Hello",}
+	category := model.Category{Name: "Hello"}
 	assert.Equal(t, category.Name, "Hello", "Category name is not set correctly")
 }
 

@@ -12,11 +12,11 @@ package main
 import (
 	"fmt"
 	"github.com/bndr/gotabulate"
-	"github.com/hassaanaliw/go-web-notes/config"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/hassaanaliw/go-web-notes/config"
 	"github.com/hassaanaliw/go-web-notes/route"
 	"net/http"
-	"github.com/gorilla/handlers"
 	"os"
 )
 

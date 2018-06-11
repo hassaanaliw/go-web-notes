@@ -6,8 +6,8 @@ Hassaan Ali Wattoo <hawattoo@umich.edu>
 package model
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 type Note struct {
