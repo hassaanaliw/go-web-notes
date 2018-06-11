@@ -11,14 +11,14 @@ import (
 )
 
 type Note struct {
-	Title         string
-	Description   string
-	Text          string
-	NoteType      string
-	DatePublished time.Time
-	DateEdited    time.Time
-	Categories    []Category
-	IsEdited      bool
+	Title         string     `json:"title"`
+	Description   string     `json:"description"`
+	Text          string     `json:"text"`
+	NoteType      string     `json:"note_type"`
+	DatePublished time.Time  `json:"date_published"`
+	DateEdited    time.Time  `json:"date_edited"`
+	Categories    []Category `json:"categories"`
+	IsEdited      bool       `json:"is_edited"`
 }
 
 type Category struct {
