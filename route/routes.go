@@ -6,6 +6,14 @@ import (
 	"net/http"
 )
 
+// Registers all the various html endpoints with the main app router
+// created in main.go
+func RegisterMainRoutes(router *mux.Router) {
+	router.HandleFunc("/", Index)
+	router.HandleFunc("/static/css/{filename}", CSSHandler)
+	router.HandleFunc("/static/js/{filename}", JSHandler)
+}
+
 func Index(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "templates/index.html")
 }

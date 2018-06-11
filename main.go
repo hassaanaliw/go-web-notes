@@ -14,6 +14,7 @@ import (
 	"github.com/bndr/gotabulate"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/hassaanaliw/go-web-notes/api"
 	"github.com/hassaanaliw/go-web-notes/config"
 	"github.com/hassaanaliw/go-web-notes/route"
 	"net/http"
@@ -44,9 +45,8 @@ func main() {
 
 	// Setup Router
 	router := mux.NewRouter()
-	router.HandleFunc("/", route.Index)
-	router.HandleFunc("/static/css/{filename}", route.CSSHandler)
-	router.HandleFunc("/static/js/{filename}", route.JSHandler)
+	api.RegisterAPIRoutes(router)
+	route.RegisterMainRoutes(router)
 
 	// Serve the HTTP Application
 	fmt.Printf("Serving web app on url: http://localhost:%d\n", configuration.Port)
