@@ -51,7 +51,7 @@ func ServeJson(w *http.ResponseWriter, r *http.Request, jsonResponse interface{}
 	(*w).Header().Set("Content-Type", "application/json; charset=UTF-8")
 	err := json.NewEncoder(*w).Encode(jsonResponse)
 	if err != nil {
-		// Log error if any but don't kill thr request
+		// Log error if any but don't kill the request
 		fmt.Println(err)
 	}
 }
